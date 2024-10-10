@@ -6,20 +6,24 @@ pipeline {
         NO_PROXY = 'localhost,127.0.0.1'
     }
     stages {
-        stage('Node.js Environment') {
-            agent {
-                docker {
-                    image 'node:22'
-                    args '-p 3000:3000'
-                }
-            }
+        stage('Setup Node.js Environment') {
             steps {
-                bat "npm install forever -g"
-                bat "git clone https://github.com/HarrySunV9x/hanakoi-blog"
-                bat "cd hanakoi-blog"
-                bat "call npm install"
-                bat "call npm run build "
-                bat "forever start index.js"
+                script {
+                    // Pull the Blog Docker image
+                    sh 'docker pull node:22'
+
+                    // Run Docker container and execute commands inside it
+                    sh '''
+                        docker run -d --name node_container -p 3000:3000 -e HTTP_PROXY=${HTTP_PROXY} -e HTTPS_PROXY=${HTTPS_PROXY} -e NO_PROXY=${NO_PROXY} node:22 /bin/bash -c "
+                            npm install forever -g && \
+                            git clone https://github.com/HarrySunV9x/hanakoi-blog && \
+                            cd hanakoi-blog && \
+                            npm install && \
+                            npm run build && \
+                            forever start index.js
+                        "
+                    '''
+                }
             }
         }
     }
