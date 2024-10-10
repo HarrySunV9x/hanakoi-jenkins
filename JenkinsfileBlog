@@ -10,10 +10,10 @@ pipeline {
             steps {
                 script {
                     // Pull the Blog Docker image
-                    sh 'docker pull node:22'
+                    bat 'docker pull node:22'
 
                     // Run Docker container and execute commands inside it
-                    sh '''
+                    bat '''
                         docker run -d --name node_container -p 3000:3000 -e HTTP_PROXY=${HTTP_PROXY} -e HTTPS_PROXY=${HTTPS_PROXY} -e NO_PROXY=${NO_PROXY} node:22 /bin/bash -c "
                             npm install forever -g && \
                             git clone https://github.com/HarrySunV9x/hanakoi-blog && \
