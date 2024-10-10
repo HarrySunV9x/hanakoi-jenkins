@@ -20,7 +20,7 @@ pipeline {
                         cd hanakoi-blog; `
                         npm install; `
                         npm run build; `
-                        Start-Process -FilePath "npm" -ArgumentList "start" -PassThru | Out-Null
+                        Start-Process -FilePath npm -ArgumentList 'start' -NoNewWindow -RedirectStandardOutput 'nul' -RedirectStandardError 'nul'
                     '''
                 }
             }
