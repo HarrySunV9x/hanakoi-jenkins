@@ -16,7 +16,7 @@ pipeline {
             steps {
                 bat "npm install forever -g"
                 bat "git clone https://github.com/HarrySunV9x/hanakoi-blog"
-                bat "cd hanakoi-blog""
+                bat "cd hanakoi-blog"
                 bat "call npm install"
                 bat "call npm run build "
                 bat "forever start index.js"
