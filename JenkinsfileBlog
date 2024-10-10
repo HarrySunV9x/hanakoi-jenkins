@@ -16,10 +16,10 @@ pipeline {
 
                     // Run Docker container and execute commands inside it
                     powershell '''
-                        git clone https://github.com/HarrySunV9x/hanakoi-blog && \
-                        cd hanakoi-blog && \
-                        npm install && \
-                        npm run build && \
+                        git clone https://github.com/HarrySunV9x/hanakoi-blog; `
+                        cd hanakoi-blog; `
+                        npm install; `
+                        npm run build; `
                         Start-Process -NoNewWindow -FilePath "npm" -ArgumentList "start"
                     '''
                 }
