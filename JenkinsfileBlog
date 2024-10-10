@@ -16,12 +16,11 @@ pipeline {
 
                     // Run Docker container and execute commands inside it
                     bat '''
-                        npm install forever -g && \
                         git clone https://github.com/HarrySunV9x/hanakoi-blog && \
                         cd hanakoi-blog && \
                         npm install && \
                         npm run build && \
-                        forever start -c "npm run start" .
+                        Start-Process -NoNewWindow -FilePath "npm" -ArgumentList "start"
                     '''
                 }
             }
