@@ -20,9 +20,9 @@ pipeline {
                         cd hanakoi-blog; `
                         npm install; `
                         npm run build; `
+                        npm install -g pm2; `
+                        pm2 start npm -- start;
                     '''
-
-                    bat "start /B npm start"
                 }
             }
         }
