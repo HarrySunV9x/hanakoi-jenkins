@@ -10,7 +10,6 @@ pipeline {
             steps {
                 script {
                     // Pull the Blog Docker image
-                    bat 'docker login'
                     bat 'docker pull node:22'
 
                     // Init
