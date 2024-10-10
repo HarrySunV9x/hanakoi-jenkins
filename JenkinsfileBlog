@@ -10,7 +10,7 @@ pipeline {
             steps {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'dc', passwordVariable: 'password', usernameVariable: 'username')]) {
-                        bat "docker login -u $username -p $password ..."
+                        bat "docker login -u $username -p $password"
                     }
 
                     // Pull the Blog Docker image
