@@ -11,7 +11,7 @@ pipeline {
                 script {
                     // Init
                     powershell '''
-                         rmdir /s /q hanakoi-blog
+                         Remove-Item -Path "hanakoi-blog" -Recurse -Force -ErrorAction SilentlyContinue
                     '''
 
                     // Run Docker container and execute commands inside it
