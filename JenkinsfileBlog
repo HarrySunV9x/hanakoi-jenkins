@@ -20,7 +20,7 @@ pipeline {
                             cd hanakoi-blog && \
                             npm install && \
                             npm run build && \
-                            forever start index.js
+                            forever start -c "npm run start" .
                         "
                     '''
                 }
