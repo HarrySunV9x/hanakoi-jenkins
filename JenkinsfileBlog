@@ -9,6 +9,10 @@ pipeline {
         stage('Setup Node.js Environment') {
             steps {
                 script {
+                    withCredentials([usernamePassword(credentialsId: 'dc', passwordVariable: 'password', usernameVariable: 'username')]) {
+                        bat "docker login -u $username -p $password ..."
+                    }
+
                     // Pull the Blog Docker image
                     bat 'docker pull node:22'
 
