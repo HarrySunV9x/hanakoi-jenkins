@@ -10,12 +10,12 @@ pipeline {
             steps {
                 script {
                     // Init
-                    bat '''
+                    powershell '''
                          rmdir /s /q hanakoi-blog
                     '''
 
                     // Run Docker container and execute commands inside it
-                    bat '''
+                    powershell '''
                         git clone https://github.com/HarrySunV9x/hanakoi-blog && \
                         cd hanakoi-blog && \
                         npm install && \
