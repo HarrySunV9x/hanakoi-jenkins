@@ -11,7 +11,7 @@ pipeline {
                 script {
                     // Init
                     bat '''
-                         rm -rf hanakoi-blog
+                         rmdir /s /q hanakoi-blog
                     '''
 
                     // Run Docker container and execute commands inside it
