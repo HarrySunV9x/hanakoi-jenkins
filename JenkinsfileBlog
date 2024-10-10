@@ -12,6 +12,12 @@ pipeline {
                     // Pull the Blog Docker image
                     bat 'docker pull node:22'
 
+                    // Init
+                    bat '''
+                         docker stop node_container
+                         docker rm node_container
+                         '''
+
                     // Run Docker container and execute commands inside it
                     bat '''
                         docker run -d --name node_container -p 3000:3000 -e HTTP_PROXY=${HTTP_PROXY} -e HTTPS_PROXY=${HTTPS_PROXY} -e NO_PROXY=${NO_PROXY} node:22 /bin/bash -c "
