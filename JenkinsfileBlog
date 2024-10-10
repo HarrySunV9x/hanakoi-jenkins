@@ -14,9 +14,10 @@ pipeline {
 
                     // Init
                     bat '''
+                         rm -rf hanakoi-blog
                          docker stop node_container
                          docker rm node_container
-                         '''
+                    '''
 
                     // Run Docker container and execute commands inside it
                     bat '''
