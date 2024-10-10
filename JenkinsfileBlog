@@ -16,11 +16,12 @@ pipeline {
 
                     // Run Docker container and execute commands inside it
                     powershell '''
+                        // clone可能失败，如果失败等五分钟重试
                         git clone https://github.com/HarrySunV9x/hanakoi-blog; `
                         cd hanakoi-blog; `
                         npm install; `
                         npm run build; `
-                        Start-Process -NoNewWindow -FilePath "npm" -ArgumentList "start"
+                        Start-Process -FilePath "npm" -ArgumentList "start" -PassThru | Out-Null
                     '''
                 }
             }
