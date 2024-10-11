@@ -11,7 +11,8 @@ pipeline {
                 script {
                     // Init
                     powershell '''
-                         Remove-Item -Path "hanakoi-llm" -Recurse -Force -ErrorAction SilentlyContinue
+                        $OutputEncoding = [System.Text.Encoding]::UTF8
+                        Remove-Item -Path "hanakoi-llm" -Recurse -Force -ErrorAction SilentlyContinue
                     '''
 
                     // Run Docker container and execute commands inside it
