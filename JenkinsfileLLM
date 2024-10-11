@@ -19,8 +19,8 @@ pipeline {
                     powershell '''
                         git clone http://github.com/HarrySunV9x/hanakoi-llm; `
                         cd hanakoi-llm; `
-                        pip install -r requirement.txt
-                        python main.py
+                        pip install -r requirement.txt; `
+                        python main.py; `
                     '''
                 }
             }
