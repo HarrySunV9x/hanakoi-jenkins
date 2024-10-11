@@ -11,7 +11,6 @@ pipeline {
                 script {
                     // Init
                     powershell '''
-                        $OutputEncoding = [System.Text.Encoding]::UTF8
                         Remove-Item -Path "hanakoi-blog" -Recurse -Force -ErrorAction SilentlyContinue
                     '''
 
