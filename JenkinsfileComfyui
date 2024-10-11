@@ -1,0 +1,13 @@
+pipeline {
+    agent any
+    stages {
+        stage('Setup ComfyUI Environment') {
+            steps {
+                script {
+                    // Run Docker container and execute commands inside it
+                    bat "C:\\ComfyUI_windows_portable\\run_nvidia_gpu.bat"
+                }
+            }
+        }
+    }
+}
