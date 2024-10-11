@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+    environment {
+        HTTP_PROXY = 'http://127.0.0.1:7897'
+        HTTPS_PROXY = 'http://127.0.0.1:7897'
+        NO_PROXY = 'localhost,127.0.0.1'
+    }
+    stages {
+        stage('Setup Python Environment') {
+            steps {
+                script {
+                    // Run Docker container and execute commands inside it
+                    powershell '''
+                        cd C:\Code\hanakoi-resource\Photo`
+                        
+                    '''
+                }
+            }
+        }
+    }
+}
