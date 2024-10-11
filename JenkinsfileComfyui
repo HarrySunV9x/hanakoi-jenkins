@@ -5,7 +5,7 @@ pipeline {
             steps {
                 script {
                     // Run Docker container and execute commands inside it
-                    bat "C:\\ComfyUI_windows_portable\\run_nvidia_gpu.bat"
+                    bat "C:\\ComfyUI_windows_portable\\python_embeded\\python.exe -s C:\\ComfyUI_windows_portable\\ComfyUI\\main.py --windows-standalone-build"
                 }
             }
         }
