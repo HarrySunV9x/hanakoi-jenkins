@@ -16,6 +16,7 @@ pipeline {
 
                     // Run Docker container and execute commands inside it
                     powershell '''
+                        git config --global http.sslVerify false
                         git clone http://github.com/HarrySunV9x/hanakoi-llm; `
                         cd hanakoi-llm; `
                         pip install -r requirement.txt; `
