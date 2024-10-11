@@ -11,12 +11,14 @@ pipeline {
                 script {
                     // Init
                     powershell '''
-                        Remove-Item -Path "hanakoi-llm" -Recurse -Force -ErrorAction SilentlyContinue
+                        Remove-Item -Path "hanakoi-llm" -Recurse -Force -ErrorAction SilentlyContinue; `
+                        $pythonHome = "C:\\ComfyUI_windows_portable\\python_embeded"; `
+                        $env:Path = "$pythonHome;$env:Path";
                     '''
 
                     // Run Docker container and execute commands inside it
                     powershell '''
-                        git config --global http.sslVerify false
+                        git config --global http.sslVerify false; `
                         git clone http://github.com/HarrySunV9x/hanakoi-llm; `
                         cd hanakoi-llm; `
                         pip install -r requirement.txt; `
