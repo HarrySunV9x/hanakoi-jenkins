@@ -6,7 +6,7 @@ pipeline {
         NO_PROXY = 'localhost,127.0.0.1'
     }
     stages {
-        stage('Setup Node.js Environment') {
+        stage('Setup Python Environment') {
             steps {
                 script {
                     // Init
@@ -16,7 +16,7 @@ pipeline {
 
                     // Run Docker container and execute commands inside it
                     powershell '''
-                        git clone https://github.com/HarrySunV9x/hanakoi-llm; `
+                        git clone http://github.com/HarrySunV9x/hanakoi-llm; `
                         cd hanakoi-llm; `
                         python install -r requirement.txt
                         python main.py
