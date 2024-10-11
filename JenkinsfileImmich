@@ -12,7 +12,7 @@ pipeline {
                     // Run Docker container and execute commands inside it
                     powershell '''
                         cd C:\Code\hanakoi-resource\Photo`
-                        
+                        docker compose up -d
                     '''
                 }
             }
