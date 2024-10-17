@@ -20,7 +20,7 @@ pipeline {
                         git clone http://github.com/HarrySunV9x/hanakoi-llm
                         cd hanakoi-llm
                         pip install -r requirements.txt
-                        python main.py
+                        python3 main.py
                     '''
                 }
             }
