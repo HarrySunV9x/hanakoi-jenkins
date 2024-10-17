@@ -12,7 +12,6 @@ pipeline {
                     // Init
                     sh '''
                         rm -rf hanakoi-llm || true
-                        export PATH="$PYTHON_HOME/bin:$PATH"
                     '''
 
                     // Run commands
