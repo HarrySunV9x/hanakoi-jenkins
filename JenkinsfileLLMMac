@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+    environment {
+        HTTP_PROXY = 'http://127.0.0.1:7897'
+        HTTPS_PROXY = 'http://127.0.0.1:7897'
+        NO_PROXY = 'localhost,127.0.0.1'
+    }
+    stages {
+        stage('Setup Python Environment') {
+            steps {
+                script {
+                    // Init
+                    sh '''
+                        rm -rf hanakoi-llm || true
+                        export PATH="$PYTHON_HOME/bin:$PATH"
+                    '''
+
+                    // Run commands
+                    sh '''
+                        git config --global http.sslVerify false
+                        git clone http://github.com/HarrySunV9x/hanakoi-llm
+                        cd hanakoi-llm
+                        pip install -r requirements.txt
+                        python main.py
+                    '''
+                }
+            }
+        }
+    }
+}

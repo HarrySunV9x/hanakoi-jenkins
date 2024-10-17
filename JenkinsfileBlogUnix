@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+    environment {
+        HTTP_PROXY = 'http://127.0.0.1:7890'
+        HTTPS_PROXY = 'http://127.0.0.1:7890'
+        NO_PROXY = 'localhost,127.0.0.1'
+    }
+    stages {
+        stage('Setup Node.js Environment') {
+            steps {
+                script {
+                    sh '''
+                        rm -rf hanakoi-blog || true
+                        git config --global http.sslVerify false
+                        git clone http://github.com/HarrySunV9x/hanakoi-blog
+                        cd hanakoi-blog
+                        npm install
+                        npm run build
+                        npm run start
+                    '''
+                }
+            }
+        }
+    }
+}
